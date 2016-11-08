@@ -13,6 +13,36 @@
 </ion-header>
 
 
-<ion-content padding>
+<!--<ion-content padding>-->
+  
+<!--  <ion-item>-->
+<!--        <ion-label floating>Email</ion-label>-->
+<!--        <ion-input type="text" value="Email" [(ngModel)]="email" required>-->
+<!--    </ion-input>-->
+<!--  </ion-item>  -->
+    
+<!--  <ion-item>-->
+<!--        <ion-label floating>Password</ion-label>-->
+<!--        <ion-input type="password" value="Password" [(ngModel)]="password" required>-->
+<!--    </ion-input>-->
+<!--  </ion-item>    -->
+    
+<!--    <button ion-button block="true" color="positive" name="submit" type="submit" (click)="lobby()">Submit</button>-->
+  
+<!--</ion-content>-->
 
+<ion-content padding>
+  
+      <form [formGroup]="login" (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" formControlName="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-textarea formControlName="Password"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!login.valid">Submit</button>
+    </form>
+  
 </ion-content>

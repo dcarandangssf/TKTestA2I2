@@ -1,7 +1,6 @@
 import { NavController, Nav } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 import { LandingPage } from '../landing/landing';
-import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',

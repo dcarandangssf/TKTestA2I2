@@ -1,6 +1,7 @@
 import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-
+import { QuestionsPage } from '../questions/questions';
+import { HistoryPage } from '../history/history';
 
 /*
   Generated class for the Lobby page.
@@ -14,15 +15,21 @@ import { Component } from '@angular/core';
 })
 export class LobbyPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
+      this.navCtrl = navCtrl;
+    
+      //This will hold data from our form
+      // this.data = null;
+        
+  }
 
-  // goToTest() {
-  //   navCtrl.push(Questions);
-  // }
+  goToTest() {
+    this.navCtrl.push(QuestionsPage);
+  }
 
-  // goToHistory() {
-  //   navCtrl.push(History);
-  // }
+  goToHistory() {
+    this.navCtrl.push(HistoryPage);
+  }
 
   ionViewDidLoad() {
     console.log('Hello LobbyPage Page');

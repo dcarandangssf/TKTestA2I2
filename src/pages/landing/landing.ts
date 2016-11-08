@@ -20,7 +20,7 @@ export class LandingPage {
     this.navCtrl = navCtrl;
     
     //This will hold data from our form
-    this.data = null;
+    // this.data = null;
     
   }
 

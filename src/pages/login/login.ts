@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Validators, FormBuilder } from '@angular/forms';
+import { LobbyPage } from '../lobby/lobby';
+import { User } from '../models/user';
 
 /*
   Generated class for the Login page.
@@ -13,10 +16,28 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+      this.navCtrl = navCtrl;
+    
+      //This will hold data from our form
+      // this.data = null;
+      
+  }
+
+  lobby() {
+      this.navCtrl.push(LobbyPage);
+  }
 
   ionViewDidLoad() {
     console.log('Hello LoginPage Page');
+    this.login = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: [''],
+    });
+  }
+  
+  logForm(){
+    console.log(this.login.value)
   }
 
 }
