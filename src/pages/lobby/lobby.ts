@@ -17,10 +17,6 @@ export class LobbyPage {
 
   constructor(public navCtrl: NavController) {
       this.navCtrl = navCtrl;
-    
-      //This will hold data from our form
-      // this.data = null;
-        
   }
 
   goToTest() {

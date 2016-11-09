@@ -15,4 +15,22 @@
 
 <ion-content padding>
 
+<ion-card (click)="buttonClicked('A')">
+  <ion-card-header>
+    Option A
+  </ion-card-header>
+  <ion-card-content>
+    {{questionsA.Text}}
+  </ion-card-content>
+</ion-card>
+
+<ion-card (click)="buttonClicked('B')">
+  <ion-card-header>
+    Option B
+  </ion-card-header>
+  <ion-card-content>
+    {{questionsB.Text}}
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
