@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { TestResultsRest } from '../../providers/test-results-rest';
+import { TestResultsRest } from './test-results-rest';
 
 /*
   Generated class for the TKAnswersService provider.

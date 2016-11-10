@@ -22,7 +22,10 @@ qNumber: any;
 nextqNumber: any;
 category: any;
 
-  constructor(public navCtrl: NavController, public qRest: QuestionsRest) {
+  constructor(
+    public navCtrl: NavController, 
+    public qRest: QuestionsRest, 
+    public tkAnswersService: TKAnswersService) {
     this.loadQuestions();
     
 // $scope.ptorQuestionGoA = 'ptor-question-go-a' + $stateParams.questionID;
@@ -84,7 +87,7 @@ category: any;
   
   buttonClicked(option) {
     this.category = ["question" + option];// .Style;
-    TKAnswersService.saveAnswer(this.category);
+    tkAnswersService.saveAnswer(this.category);
     
     if(this.qNumber == 30) {
       performRequest();

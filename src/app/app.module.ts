@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpModule } from '@angular/http';
 
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
@@ -9,7 +10,7 @@ import { LobbyPage } from '../pages/lobby/lobby';
 import { QuestionsPage } from '../pages/questions/questions';
 import { HistoryPage } from '../pages/history/history';
 
-import { TestResultsRest } from '../../providers/test-results-rest';
+import { TestResultsRest } from '../providers/test-results-rest';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TestResultsRest } from '../../providers/test-results-rest';
     RegisterPage,
     LobbyPage,
     QuestionsPage,
-    HistoryPage
+    HistoryPage,
+    HttpModule
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,8 @@ import { TestResultsRest } from '../../providers/test-results-rest';
     RegisterPage,
     LobbyPage,
     QuestionsPage,
-    HistoryPage
+    HistoryPage,
+    HttpModule
   ],
   providers: [TestResultsRest]
 })

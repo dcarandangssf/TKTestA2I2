@@ -27,7 +27,7 @@ data: any;
       // then on the response, it'll map the JSON data to a parsed 35 object.
       // Next, we process the data and resolve the promise with the new data.
       this.http.get('https://strongloop-backend-dcarandangssf.c9users.io:8080/api/Questions')
-        .map(res => res.json())
+        .map(res => res.json().data as Questions[])
         .subscribe(data => {
             // we've got back the raw data, now generate the core schedule data
             // and save the data for later reference
