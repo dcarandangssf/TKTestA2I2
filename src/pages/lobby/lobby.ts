@@ -1,15 +1,10 @@
 import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { QuestionsPage } from '../questions/questions';
-import { HistoryPage } from '../history/history';
-import { QuestionsRest } from '../../providers/questions-rest-service';
+// import { QuestionsPage } from '../questions/questions';
+// import { HistoryPage } from '../history/history';
+// import { QuestionsRest } from '../../providers/questions-rest-service';
+// import { TKAnswersService } from '../../providers/tk-answers-service';
 
-/*
-  Generated class for the Lobby page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 @Component({
   selector: 'page-lobby',
@@ -17,18 +12,20 @@ import { QuestionsRest } from '../../providers/questions-rest-service';
 })
 export class LobbyPage {
 
-  constructor(public navCtrl: NavController, private questionsRest: QuestionsRest) {
-      questionsRest.load();
-  }
+  constructor(public navCtrl: NavController,
+              //private questionsRest: QuestionsRest
+              ) {
+                  // questionsRest.load();
+              }
 
-  goToTest() {
-    TKAnswersService.resetAnswers()
-    .then(this.navCtrl.push(QuestionsPage));
-  }
+  // goToTest() {
+  //   TKAnswersService.resetAnswers()
+  //   .then(this.navCtrl.push(QuestionsPage));
+  // }
 
-  goToHistory() {
-    this.navCtrl.push(HistoryPage);
-  }
+  // goToHistory() {
+  //   this.navCtrl.push(HistoryPage);
+  // }
 
   ionViewDidLoad() {
     console.log('Hello LobbyPage Page');

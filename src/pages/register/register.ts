@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UsersRest } from '../../providers/users-rest';
 import { LobbyPage } from '../lobby/lobby';
-
+import 'rxjs/add/operator/map';
 /*
   Generated class for the Register page.
 
@@ -14,20 +15,29 @@ import { LobbyPage } from '../lobby/lobby';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public userRest: UsersRest) {
+  }
+
+  ionViewDidLoad() {
+    console.log('Hello RegisterPage Page');
   }
   
-  user = {}
+  user = {};
   
   signupForm(form) {
     console.log(this.user);
     if (form.invalid) {
       return alert("Please fill in all of the required fields.");
     }
-    this.navCtrl.push(LobbyPage);
-  }  
-  ionViewDidLoad() {
-    console.log('Hello RegisterPage Page');
+    this.userRest.register(this.user)
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.setItem('token', res.token);
+      window.localStorage.setItem('userId', res.id);
+      this.navCtrl.push(LobbyPage);
+    }, err => {
+      alert("Uh ohes!");
+    });
   }
-
 }

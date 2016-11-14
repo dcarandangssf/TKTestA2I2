@@ -1,27 +1,25 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HttpModule } from '@angular/http';
 
+import { MyApp } from './app.component';
+// import { HttpModule } from '@angular/http';
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { LobbyPage } from '../pages/lobby/lobby';
-import { QuestionsPage } from '../pages/questions/questions';
-import { HistoryPage } from '../pages/history/history';
 
-import { TestResultsRest } from '../providers/test-results-rest';
+import { Storage } from '@ionic/storage';
+import { UsersRest } from '../providers/users-rest';
+
 
 @NgModule({
   declarations: [
     MyApp,
+    // HttpModule,
     LandingPage,
     LoginPage,
     RegisterPage,
     LobbyPage,
-    QuestionsPage,
-    HistoryPage,
-    HttpModule
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,11 +30,11 @@ import { TestResultsRest } from '../providers/test-results-rest';
     LandingPage,
     LoginPage,
     RegisterPage,
-    LobbyPage,
-    QuestionsPage,
-    HistoryPage,
-    HttpModule
+    LobbyPage
   ],
-  providers: [TestResultsRest]
+  providers: [
+    Storage,
+    UsersRest
+  ]
 })
 export class AppModule {}

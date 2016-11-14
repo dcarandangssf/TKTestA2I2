@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UsersRest } from '../../providers/users-rest';
 import { LobbyPage } from '../lobby/lobby';
-import { SSfUsersRest } from '../../provider/ssf-users-rest';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-login',
@@ -12,31 +13,28 @@ export class LoginPage {
   
   constructor(
     public navCtrl: NavController,
-    public ssfUsersRest: SSFUsersRest
-    ) {}  
-  
-  user = {};
-  
-  signinForm(form) {
-    console.log(this.user);
-    
-    if (form.invalid) {
-      return alert("Please fill in all of the required fields.");
-    }
-    
-    this.ssfUsersRest.post(form)
-    .map(res => res.json())
-    .subscribe(res => {
-      console.log(res);
-      this.navCtrl.setRoot(LobbyPage);
-      },
-      err => {
-        alert(err);
-      })
-  }
+    public usersRest: UsersRest) {}  
 
   ionViewDidLoad() {
     console.log('Hello LandingPage Page');
   }
+
+  user = {};
   
+  signinForm(form) {
+    console.log(this.user);
+    if (form.invalid) {
+      return alert("Please fill in all of the required fields.");
+    }
+    this.usersRest.login(this.user)
+    .map(res => res.json())
+    .subscribe(res => {
+      console.log(res);
+      window.localStorage.setItem('token', res.id);
+      window.localStorage.setItem('userId', res.userId);
+      this.navCtrl.setRoot(LobbyPage);
+    }, err => {
+      console.log(err);
+    });
+  }
 }
