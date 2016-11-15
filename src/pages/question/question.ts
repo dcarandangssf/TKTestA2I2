@@ -44,7 +44,7 @@ export class Question {
     //     "Style": "Avoiding"
     //   }];
     this.testInfo = this.TKTestQuestionsServ.getQuestion(this.questionId);
-    this.testInfo.forEach(function(infoDict: any) {
+    this.testInfo.forEach(function(infoDict) {
       if(infoDict.Answer_ID === "A")
         test.questionA = infoDict;
       if(infoDict.Answer_ID === "B") {
@@ -76,7 +76,7 @@ export class Question {
     var answersDict = this.TKTestAnswersServ.getAnswers();
     var date = new Date();
     answersDict["createDate"] = date.toUTCString();
-    answersDict["userID"] = window.localStorage.getItem('userId');
+    answersDict["userId"] = window.localStorage.getItem('userId');
     this.TKTestAnswersServ.saveTest(answersDict, window.localStorage.getItem('token'));
     this.TKResultsButtonServ.setShouldShowMenuButton(true);
     this.navCtrl.setRoot(Result);
