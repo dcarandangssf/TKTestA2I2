@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UsersRest {
+export class RestSSFUsers {
 
   private baseUrl = "https://strongloop-backend-dcarandangssf.c9users.io:8080/api/"
   private path = "SSFUsers/"

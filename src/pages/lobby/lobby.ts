@@ -1,63 +1,60 @@
-import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-// import { QuestionsPage } from '../questions/questions';
-// import { HistoryPage } from '../history/history';
-// import { QuestionsRest } from '../../providers/questions-rest-service';
-// import { TKAnswersService } from '../../providers/tk-answers-service';
+import { NavController } from 'ionic-angular';
 
+import { Question } from '../question/question';
+import { Landing } from '../landing/landing';
+import { History } from '../history/history';
 
+import { RestSSFUsers } from '../../providers/rest-ssf-users';
+import { TKTestQuestions } from '../../providers/tk-test-questions';
+import { TKTestAnswers } from '../../providers/tk-test-answers';
+/*
+  Generated class for the Lobby page.
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
   selector: 'page-lobby',
   templateUrl: 'lobby.html'
 })
-export class LobbyPage {
+export class Lobby {
 
   constructor(public navCtrl: NavController,
-              //private questionsRest: QuestionsRest
-              ) {
-                  // questionsRest.load();
-              }
-
-  // goToTest() {
-  //   TKAnswersService.resetAnswers()
-  //   .then(this.navCtrl.push(QuestionsPage));
-  // }
-
-  // goToHistory() {
-  //   this.navCtrl.push(HistoryPage);
-  // }
-
-  ionViewDidLoad() {
-    console.log('Hello LobbyPage Page');
+              public SSFUsersRest: RestSSFUsers,
+              public TKTestQuestionsServ: TKTestQuestions,
+              public TKTestAnswersServ: TKTestAnswers) {
+    TKTestQuestionsServ.all();
   }
 
+  ionViewDidLoad() {
+    console.log('Hello Lobby Page');
+  }
+  
+  //get questions
+  
+  logoutApp() {
+    this.SSFUsersRest.logout(window.localStorage.getItem('token'))
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.clear();
+      this.navCtrl.setRoot(Landing);
+    }, err => {
+      //because this is logging the user out, we don't need to worry about this here.
+      // alert("Something went really wrong.");
+      window.localStorage.clear();
+      this.navCtrl.setRoot(Landing);
+    });
+  }
+  
+  takeTest() {
+    this.TKTestAnswersServ.resetAnswers();
+    this.navCtrl.push(Question, {
+      questionId: 1
+    });
+  }
+  
+  toHistory() {
+    this.navCtrl.push(History);
+  }
+  
 }
-
-// function($scope, TKTestQuestionService, $state, TKAnswersService, SSFUsersRest, $window, $ionicHistory) {
-//     TKTestQuestionService.all();
-//     $scope.goToTest = function() {
-//         TKAnswersService.resetAnswers();
-//         $state.go('question', {
-//             questionID: 1
-//         });
-//     };
-//     $scope.logout = function() {
-//         SSFUsersRest.logout($window.localStorage.token)
-//             .then(function(response) {
-//                 // handle different responses and decide what happens next
-//                 if(response.status === 204) {
-//                     $window.localStorage.clear();
-//                     $ionicHistory.nextViewOptions({
-//                         historyRoot: true
-//                     });
-//                     $state.go('landing');
-//                 }
-//             }, function(error) {
-//                 // inform the user of any known problems that arose, otherwise give a generic 
-//                 // failed message
-//                 if(error.status === 500) {
-//                     return alert("uh oh... you're stuck here");
-//                 }
-//             });
-//     };
-// }

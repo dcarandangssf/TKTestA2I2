@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { UsersRest } from '../../providers/users-rest';
-import { LobbyPage } from '../lobby/lobby';
+import { RestSSFUsers } from '../../providers/rest-ssf-users';
+import { Lobby } from '../lobby/lobby';
 import 'rxjs/add/operator/map';
 /*
   Generated class for the Register page.
@@ -13,10 +13,10 @@ import 'rxjs/add/operator/map';
   selector: 'page-register',
   templateUrl: 'register.html'
 })
-export class RegisterPage {
+export class Register {
 
   constructor(public navCtrl: NavController,
-              public userRest: UsersRest) {
+              public userRest: RestSSFUsers) {
   }
 
   ionViewDidLoad() {
@@ -35,7 +35,7 @@ export class RegisterPage {
     .subscribe(res => {
       window.localStorage.setItem('token', res.token);
       window.localStorage.setItem('userId', res.id);
-      this.navCtrl.push(LobbyPage);
+      this.navCtrl.push(Lobby);
     }, err => {
       alert("Uh ohes!");
     });

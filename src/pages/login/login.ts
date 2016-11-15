@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { UsersRest } from '../../providers/users-rest';
-import { LobbyPage } from '../lobby/lobby';
+import { RestSSFUsers } from '../../providers/rest-ssf-users';
+import { Lobby } from '../lobby/lobby';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -9,14 +9,14 @@ import 'rxjs/add/operator/map';
   templateUrl: 'login.html'
 })
 
-export class LoginPage {
+export class Login {
   
   constructor(
     public navCtrl: NavController,
-    public usersRest: UsersRest) {}  
+    public usersRest: RestSSFUsers) {}  
 
   ionViewDidLoad() {
-    console.log('Hello LandingPage Page');
+    console.log('Hello Landing Page');
   }
 
   user = {};
@@ -32,7 +32,7 @@ export class LoginPage {
       console.log(res);
       window.localStorage.setItem('token', res.id);
       window.localStorage.setItem('userId', res.userId);
-      this.navCtrl.setRoot(LobbyPage);
+      this.navCtrl.setRoot(Lobby);
     }, err => {
       console.log(err);
     });

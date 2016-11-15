@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { RegisterPage } from '../register/register';
+import { Login } from '../login/login';
+import { Register } from '../register/register';
 
 @Component({
   selector: 'page-landing',
   templateUrl: 'landing.html'
 })
-export class LandingPage {
+export class Landing {
 
   constructor(public navCtrl: NavController) {
     this.navCtrl = navCtrl;
   }
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(Login);
   }
   
   register() {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(Register);
   }
 
   ionViewDidLoad() {
-    console.log('Hello LandingPage Page');
+    console.log('Hello Landing Page');
   }
 
 }
