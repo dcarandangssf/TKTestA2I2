@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { Deploy } from '@ionic/cloud-angular';
 
 import { Landing } from '../pages/landing/landing';
 
@@ -11,7 +12,8 @@ import { Landing } from '../pages/landing/landing';
 export class MyApp {
   rootPage: any = Landing;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform,
+              public deploy: Deploy) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

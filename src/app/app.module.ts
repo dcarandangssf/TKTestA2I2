@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ChartModule } from 'ng2-chartjs2';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 //States
 import { Landing } from '../pages/landing/landing';
@@ -32,11 +33,19 @@ const injections = [
   Result,
   History
 ]
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'ba2c4d61'
+  }
+};
+
 @NgModule({
   declarations: injections,
   imports: [
     IonicModule.forRoot(MyApp),
-    ChartModule
+    ChartModule,
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: injections,

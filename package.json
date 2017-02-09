@@ -10,7 +10,8 @@
     "emulate:before": "build",
     "deploy:before": "build",
     "build:before": "build",
-    "run:before": "build"
+    "run:before": "build",
+    "start": "ionic serve -a $IP -p $PORT -r 8081 --nolivereload"
   },
   "dependencies": {
     "@angular/common": "2.1.1",
